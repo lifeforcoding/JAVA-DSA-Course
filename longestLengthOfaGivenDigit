@@ -1,0 +1,14 @@
+public static int longestLengthOfDigit(int[] a) {
+        int maxChain = 0;
+        int currentChain = 0;
+        for (int e : a) {
+            if (e != 1) {
+                maxChain = Math.max(currentChain, maxChain);
+                currentChain = 0;
+                continue;
+            }
+            currentChain++;
+        }
+        maxChain = Math.max(currentChain,maxChain);
+        return maxChain;
+    }
