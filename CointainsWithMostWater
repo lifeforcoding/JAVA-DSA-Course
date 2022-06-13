@@ -1,0 +1,30 @@
+// This function is with time complexity of O(n^2) which use 2 for loops
+    public static int containsMaxWater(int[] a) {
+        int maxArea = 0;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i + 1; j < a.length; j++ ) {
+                int distance = j - i;
+                int height = Math.min(a[i], a[j]);
+                int area = height * distance;
+                maxArea = Math.max(area, maxArea);
+            }
+        }
+        return maxArea;
+    }
+
+
+    // This function is with time complexity of O(n) which use 2 pointer approach
+    public static int containsWithMaxWater(int[] a) {
+        int l = 0, r = a.length - 1;
+        int maxArea = 0;
+        while (l < r) {
+            int height = Math.min(a[l],a[r]);
+            int distance = r - l;
+            int area = distance * height;
+            maxArea = Math.max(area, maxArea);
+            if (a[l] < a[r])
+                l++;
+            else r--;
+        }
+        return maxArea;
+    }
