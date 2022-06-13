@@ -1,0 +1,23 @@
+public class TrappingRainWater {
+    public static void main(String[] args) {
+        
+    }
+
+    //Function for calculating the total unit of rain water trapped where the width of each block is 1
+    public static int unitsOfWaterTrapped(int[] a) {
+        int[] l = new int[a.length]; // This array represents the highest bar present to the left of the current bar
+        int[] r = new int[a.length]; // This array represents the highest bar present to the right of the current bar
+        l[0] = a[0];
+        r[r.length - 1] = a[a.length - 1];
+        //Function to fill the "l" array with the most height element to the left of the current element
+        for (int i = 1; i < a.length; i++)
+            l[i] = Math.max(a[i],l[i - 1]);
+        //Function to fill the "r" array with the most height element to the right1 of the current element starting from end of the array
+        for (int i = a.length - 2; i >= 0; i--)
+            r[i] = Math.max(a[i], r[i + 1]);
+        int totalUnitOfWater = 0;
+        for (int i = 0; i < a.length; i++)
+            totalUnitOfWater += Math.min(l[i], r[i]) - a[i];
+        return totalUnitOfWater;
+    }
+}
