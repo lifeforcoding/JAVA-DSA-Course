@@ -1,0 +1,12 @@
+public static void moveToTheEnd(int[] a) {
+        int noOfZeros = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != 0)
+                System.out.print(a[i] + " ");
+            else noOfZeros++;
+        }
+            while (noOfZeros > 0) {
+                System.out.print("0" + " ");
+                noOfZeros--;
+            }
+    }
