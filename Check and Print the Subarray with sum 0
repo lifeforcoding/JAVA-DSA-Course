@@ -1,0 +1,26 @@
+public static boolean subArrayWithZero(int[] a) {
+        ArrayList<Integer> prefix = new ArrayList<>();
+        boolean isPresent = false;
+        int l = 0, r = a.length-1; // Pointer to map the subarray whose sum is zero.
+        int prefixSum;
+        for (int i = 0; i < a.length; i++) {
+            if (i!=0)
+                prefixSum = prefix.get(i - 1) + a[i];
+            else {
+                prefix.add(a[i]);
+                prefixSum = a[i];
+            }
+            if (prefix.contains(prefixSum)) {
+                l = prefix.indexOf(prefixSum) + 1;
+                r = i;
+                isPresent = true;
+                break;
+            }
+            else prefix.add(prefixSum);
+        }
+        if (isPresent) {
+            while (l <= r)
+                System.out.print(a[l++] + " ");
+        }
+        return isPresent;
+    }
