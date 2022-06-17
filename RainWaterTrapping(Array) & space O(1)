@@ -20,4 +20,25 @@ public class TrappingRainWater {
             totalUnitOfWater += Math.min(l[i], r[i]) - a[i];
         return totalUnitOfWater;
     }
+    // Space Complexity O(1)
+    public static int trap(int[] height) {
+        int l = 0, r = height.length - 1;
+        int left_max = 0, right_Max = 0;
+        int totalWater = 0;
+        while (l <= r) {
+            if (height[l] >= height[r]) {
+                if (height[r] > right_Max)
+                    right_Max = height[r];
+                else totalWater += right_Max - height[r];
+                r--;
+            }
+            else {
+                if (height[l] > left_max)
+                    left_max = height[l];
+                else totalWater += left_max - height[l];
+                l++;
+            }
+        }
+        return totalWater;
+    }
 }
