@@ -1,0 +1,20 @@
+public boolean canThreePartsEqualSum(int[] arr) {
+        if (arr.length < 3)
+            return false;
+        int totalSum = 0;
+        for (int e : arr)
+            totalSum += e;
+        if (totalSum % 3 != 0)
+            return false;
+        int partPerSum = totalSum / 3;
+        int currentSum = 0;
+        int count = 0;
+        for (int e : arr) {
+            currentSum += e;
+            if (partPerSum == currentSum) {
+                currentSum = 0;
+                count++;
+            }
+        }
+        return (count >= 3);
+    }
