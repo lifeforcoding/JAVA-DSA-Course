@@ -6,9 +6,10 @@ public static int findMajorityElement(int[] nums) {
             if (nums[i] == majorityElement)
                 count++;
             else count--;
-            if (count == 0)
+            if (count == 0) {
                 majorityElement = nums[i];
             count = 1;
+            }
         }
         int majorityOfTheElement = 0;
         for (int e : nums) {
