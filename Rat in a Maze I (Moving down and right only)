@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+
+public class Practice {
+    public static void main(String[] args) {
+        int[][] m = {{1, 0, 0},
+                {1, 1, 1},
+                {1, 0, 1}};
+        int n = 3;
+        ArrayList<String> s1 = findPath(m, n);
+        System.out.println(s1);
+    }
+    public static ArrayList<String> findPath(int[][] m, int n) {
+        ArrayList<String> ans = new ArrayList<>();
+        int[][] visited = new int[n][n];
+        solve(m, 0, 0, ans, visited);
+        if (ans.size() == 0)
+            ans.add("-1");
+        return ans;
+    }
+    public static void solve(int[][] arr, int row, int col, ArrayList<String> ans, int[][] visited) {
+        if (row == arr.length && col == arr.length - 1) {
+            addAns(ans, visited);
+            return;
+        }
+        if (col == arr.length || row == arr.length || arr[row][col] == 0 || visited[row][col] == 1)
+            return;
+        visited[row][col] = 1;
+        solve(arr,row + 1, col, ans, visited);
+        solve(arr, row, col + 1, ans, visited);
+        visited[row][col] = 0;
+    }
+
+    public static void addAns(ArrayList<String> ans, int[][] visited) {
+        String s1 = "";
+        int r = 0;
+        int c = 0;
+        while (r < visited.length-1 || c < visited.length -1) {
+            if (c < visited.length - 1) {
+                if (visited[r][c + 1] == 1) {
+                    c++;
+                    s1 += "R";
+                    continue;
+                }
+            }
+            if (r < visited.length - 1) {
+                if (visited[r + 1][c] == 1) {
+                    r++;
+                    s1 += "D";
+                }
+            }
+        }
+        ans.add(s1);
+    }
+}
