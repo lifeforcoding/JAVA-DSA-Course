@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Practice {
+    public static void main(String[] args) {
+        List<String> s =AllPossibleStrings("abc");
+        Collections.sort(s);
+        System.out.println(s);
+    }
+    public static List<String> AllPossibleStrings(String s) {
+        List<String> a = new ArrayList<>();
+        powerSet(s, 0, a,"");
+        Collections.sort(a);
+        return a;
+    }
+    public static void powerSet(String s, int i, List<String> ans, String crr) {
+        if (i == s.length()) {
+            if (crr.length() > 0)
+                ans.add(crr);
+            return;
+        }
+        powerSet(s,i + 1, ans, crr);
+        powerSet(s,i + 1, ans, crr + s.charAt(i));
+    }
+}
