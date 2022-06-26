@@ -1,0 +1,11 @@
+public static boolean twoSum(int[] arr, int sum, int n) {
+        int l = 0, r = n - 1;
+        while (l < r) {
+            if (arr[r] + arr[l] == sum)
+                return true;
+            else if (arr[r] + arr[l] > sum)
+                r--;
+            else l++;
+        }
+        return false;
+    }
