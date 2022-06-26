@@ -1,0 +1,11 @@
+public static boolean isPalindromeDigit(int n) {
+        int temp = n;
+        int revDigit = temp % 10;
+        temp /= 10;
+        while (temp > 0) {
+            int ld = temp % 10;
+            revDigit = revDigit * 10 + ld;
+            temp /= 10;
+        }
+        return revDigit == n;
+    }
