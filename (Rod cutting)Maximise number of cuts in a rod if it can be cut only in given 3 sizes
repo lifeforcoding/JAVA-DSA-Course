@@ -1,0 +1,14 @@
+//Maximise number of cuts in a rod if it can be cut only in given 3 sizes
+    public static int maxNoOfCuts(int n, int a, int b, int c) {
+        if (n == 0)
+            return 0;
+        if (n < 0)
+            return Integer.MIN_VALUE;
+        int countA = maxNoOfCuts(n - a, a, b, c) + 1;
+        int countB = maxNoOfCuts(n - b, a, b, c) + 1;
+        int countC = maxNoOfCuts(n - c, a, b, c) + 1;
+        int ans = Math.max(countA,Math.max(countB, countC));
+        if (ans > 0)
+            return ans;
+        else return -1;
+    }
