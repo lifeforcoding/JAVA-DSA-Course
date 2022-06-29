@@ -7,12 +7,8 @@ public static List<List<Integer>> threeSum(int[] nums) {
             int r = n - 1;
             while (l < r) {
                 if (nums[i] + nums[l] + nums[r] == 0) {
-                    if (ans.contains(Arrays.asList(nums[i], nums[l], nums[r]))) {
-                        l++;
-                        r--;
-                        continue;
-                    }
-                    ans.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    if (!ans.contains(Arrays.asList(nums[i], nums[l], nums[r]))) 
+                        ans.add(Arrays.asList(nums[i], nums[l], nums[r]));                                                                      
                     l++;
                     r--;
                 }
