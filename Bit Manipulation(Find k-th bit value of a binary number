@@ -1,5 +1,0 @@
-public static char findKthBitValue(long n, long k) {
-        if ((n & (1 << k)) != 0)
-            return '1';
-        else return '0';
-    }
