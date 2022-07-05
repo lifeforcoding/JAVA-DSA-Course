@@ -1,0 +1,10 @@
+//Check if a string is a subsequences of b string
+    public static boolean isSubsequence(String s, String t) {
+        int from = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (t.indexOf(s.charAt(i), from) < 0)
+                return false;
+            from = t.indexOf(s.charAt(i), from) + 1;
+        }
+        return true;
+    }
