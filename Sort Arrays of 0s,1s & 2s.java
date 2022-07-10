@@ -20,3 +20,17 @@
         a[from] = a[to];
         a[to] = temp;
     }
+
+//Sort an array of 2 types element
+    public static void sortElements(int[] a) {
+        int low = 0, mid = 0;
+        while (mid < a.length) {
+            if (a[mid] == 0) {
+                swap(a, low, mid);
+                low++;
+                mid++;
+            }
+            else if (a[mid] == 1)
+                mid++;
+        }
+    }
