@@ -17,15 +17,15 @@ public static void swap(int[] a, int from, int to) {
 
     //Insertion sort
     public static void insertionSort(int[] a) {
-        for (int i = a.length - 2; i >= 0; i--) {
+        for (int i = 1; i < a.length; i++) {
             int temp = a[i];
-            int j = i + 1;
-            for (; j < a.length; j++) {
-                if (temp > a[j])
-                    a[j-1] = a[j];
+            int j = i - 1;
+            for (; j >= 0; j--) {
+                if(temp < a[j])
+                    a[j + 1] = a[j];
                 else break;
             }
-            a[j -1] = temp;
+            a[j + 1] = temp;
         }
     }
 
