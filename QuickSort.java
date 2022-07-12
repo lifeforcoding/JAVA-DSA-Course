@@ -1,10 +1,4 @@
-public static void main(String[] args) {
-        int[] a = new int[]{7,4,9,1,8,2,3,5};
-        quickSort(a, 0, a.length - 1);
-        for (int e : a)
-            System.out.print(e + " ");
-    }
-    //Function for quick sort Algo
+//Function for quick sort Algo
     public static void quickSort(int[] arr, int s, int e) {
         //Base case
         if (s >= e)
@@ -29,11 +23,14 @@ public static void main(String[] args) {
         int m = s; //Starting index before the pivot point
         //Swapping element greater than the pivot to the left side
         while (m < count && k <= e) {
-            if (arr[m] > arr[count] && arr[k] < arr[count]) {
-                swap(arr, m, k);
-                m++;
+            if (arr[m] > arr[count]) {
+                if (arr[k] < arr[count])
+                    swap(arr, m++, k++);
+                else {
+                    k++;
+                }
             }
-            k++;
+            else m++;
         }
 
         return count;
