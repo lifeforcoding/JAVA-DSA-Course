@@ -39,7 +39,7 @@ public static void main(String[] args) {
         int index1 = 0;
         int index2 = 0;
         mainarrayIndex = start;
-        while (index1 < a1.length && index2 <= a2.length) {
+        while (index1 < a1.length && index2 < a2.length) {
             if (a1[index1] < a2[index2])
                 arr[mainarrayIndex++] = a1[index1++];
             else arr[mainarrayIndex++] = a2[index2++];
