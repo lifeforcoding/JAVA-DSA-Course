@@ -4,7 +4,6 @@
         int r = a.length - 1;
         while(l <= r) {
             int mid = l + (r - l)/2;
-            System.out.println(mid);
             if(a[mid] == key) return mid;
             if(a[l] <= a[mid]) { // left part sorted
                 if(key >= a[l] && key < a[mid]) { // left side present
