@@ -33,3 +33,26 @@ public static Node reverse(Node node, int k)
         }
         return newHead;
     }
+
+
+// Using recursive approach
+public static Node reverse(Node node, int k) {
+        Node previous = null;
+        Node current = node;
+        Node next;
+            int i = 0;
+            // loop to reverse the list upto k length
+            while (i < k) {
+                if (current.next == null) {
+                    current.next = previous;
+                    return current;
+                }
+                next = current.next;
+                current.next = previous;
+                previous = current;
+                current = next;
+                i++;
+            }
+        node.next = reverse(current, k);
+        return previous;
+    }
