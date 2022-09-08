@@ -4,7 +4,7 @@
         int i = n -1;
         Queue<Integer> pq = new PriorityQueue<>();
         while (i >= (n - K))
-            pq.offer(array[i++]);
+            pq.offer(array[i--]);
         for (; i >= 0; i--) {
             int top = pq.poll();
             pq.offer(array[i] + top);
