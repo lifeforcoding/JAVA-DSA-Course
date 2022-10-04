@@ -1,2 +1,2 @@
 # JAVA-DSA-Course
-Answer of all the assignment question and class practice questio od ANUJ Bhaiya DSA Course on Unacademy
+A Repository of solution for some important DSA Question of all the Topics
