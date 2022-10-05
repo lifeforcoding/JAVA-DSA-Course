@@ -30,6 +30,12 @@ public int minDistance(String word1, String word2) {
         int n = word1.length();
         int m = word2.length();
         int[][] dp = new int[n+1][m+1];
+        //This loop will fill the 2d array such that if there is n no of element available in s1/s2 and 0 no. of element remaining
+        //in the string s2/s1 then what should be the dp array should return
+        for(int i = 0; i <= n; i++)
+            dp[0][i] = i;
+        for (int j = 0; j <= m; j++)
+            dp[j][0] = j;
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1))
@@ -39,5 +45,5 @@ public int minDistance(String word1, String word2) {
                 }
             }
         }
-        return dp[m][n];
+        return dp[n][m];
     }
