@@ -47,3 +47,29 @@ public int minDistance(String word1, String word2) {
         }
         return dp[n][m];
     }
+
+
+//Space Optimised further using a array of only 2 rows only and columns are as per string 2.length +1
+public int minDistance(String word1, String word2) {
+        int n = word1.length();
+        int m = word2.length();
+        int[][] dp = new int[2][m+1];
+        int index = 0;
+        //This loop will fill the 2d array such that if there is n no of element available in s1/s2 and 0 no. of element remaining
+        //in the string s2/s1 then what should be the dp array should return
+        for(int i = 0; i <= m; i++)
+            dp[index][i] = i;
+
+        for (int i = 1; i <= n; i++) {
+            index = i & 1; //Alternate the index between 0 & 1
+            dp[index][0] = i;
+            for (int j = 1; j <= m; j++) {
+                if (word1.charAt(i - 1) == word2.charAt(j - 1))
+                    dp[index][j] = dp[1 - index][j - 1];
+                else {
+                    dp[index][j] = 1 + Math.min(dp[1 - index][j - 1], Math.min(dp[1 - index][j], dp[index][j - 1]));
+                }
+            }
+        }
+        return dp[index][m];
+    }
