@@ -49,4 +49,36 @@ class Trie {
         }
         return true;
     }
+    //implement delete function in trie
+    public boolean deleteWord(String word) {
+        TrieNode crr = root;
+        if (word.length() == 0) return false;
+
+        TrieNode toDeleteNode = null;
+        char toDeleteChar = '\0';
+
+        for (int i = 0; i < word.length(); i++) {
+            char letter = word.charAt(i);
+            if (!crr.map.containsKey(letter))
+                return false;
+            //This condition is for, if the crr map contains more than 1 element or if this node is temination node of some other
+            //Word then we mark this node with todeleteNode var and the matching char with todelete char
+            if (crr.map.size() > 1 || crr.isTerminated) {
+                toDeleteNode = crr;
+                toDeleteChar = letter;
+            }
+            crr = crr.map.get(letter);
+        }
+        //If the node crr refers to is not a terminated then it is a case that the prefix is presented
+        //but it is for another word so in this case we return false.
+        if (!crr.isTerminated) return false;
+
+        //This condition is, if the crr node map is empty then it is a case that we can delete entire node tree starting from
+        //todeletenode to the crr node
+        if (crr.map.isEmpty())
+            toDeleteNode.map.remove(toDeleteChar);
+        else crr.isTerminated = false; // If the delete word is a prefix of some other word then simply we can mark the crr node 
+        //isTerminated to false.
+        return true;
+    }
 }
